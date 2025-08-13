@@ -1,4 +1,10 @@
+import { NavLink } from "react-router-dom";
+
 export default function Navbar() {
+  const linkClasses = ({ isActive }: { isActive: boolean }) =>
+    `px-4 py-2 rounded-md transition-colors ${
+      isActive ? "bg-blue-600 text-white" : "text-gray-700 hover:bg-gray-200"
+    }`;
   return (
     <nav className="bg-white shadow-md sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -7,18 +13,18 @@ export default function Navbar() {
             MyBrand
           </div>
           <div className="hidden md:flex space-x-6">
-            <a href="#" className="text-gray-700 hover:text-indigo-600">
+            <NavLink to="/" className={linkClasses}>
               Home
-            </a>
-            <a href="#" className="text-gray-700 hover:text-indigo-600">
+            </NavLink>
+            <NavLink to="/about" className={linkClasses}>
               About
-            </a>
-            <a href="#" className="text-gray-700 hover:text-indigo-600">
+            </NavLink>
+            <NavLink to="/services" className={linkClasses}>
               Services
-            </a>
-            <a href="#" className="text-gray-700 hover:text-indigo-600">
+            </NavLink>
+            <NavLink to="/contact" className={linkClasses}>
               Contact
-            </a>
+            </NavLink>
           </div>
           {/* Mobile menu button */}
           <div className="md:hidden">
@@ -55,30 +61,18 @@ export default function Navbar() {
         className="md:hidden hidden px-2 pt-2 pb-3 space-y-1"
         id="mobile-menu"
       >
-        <a
-          href="#"
-          className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-indigo-50 hover:text-indigo-600"
-        >
+        <NavLink to="/" className={linkClasses}>
           Home
-        </a>
-        <a
-          href="#"
-          className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-indigo-50 hover:text-indigo-600"
-        >
+        </NavLink>
+        <NavLink to="/about" className={linkClasses}>
           About
-        </a>
-        <a
-          href="#"
-          className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-indigo-50 hover:text-indigo-600"
-        >
+        </NavLink>
+        <NavLink to="/services" className={linkClasses}>
           Services
-        </a>
-        <a
-          href="#"
-          className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-indigo-50 hover:text-indigo-600"
-        >
+        </NavLink>
+        <NavLink to="/contact" className={linkClasses}>
           Contact
-        </a>
+        </NavLink>
       </div>
     </nav>
   );
