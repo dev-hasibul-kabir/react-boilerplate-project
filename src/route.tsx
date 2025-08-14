@@ -4,6 +4,10 @@ import HomePage from "./pages/home";
 import AboutPage from "./pages/about";
 import ServicesPage from "./pages/services";
 import ContactPage from "./pages/contact";
+import AuthLayout from "./components/AuthLayout";
+import Login from "./pages/authentication/login";
+import Signup from "./pages/authentication/signup";
+import NotFound from "./pages/NotFound";
 
 export const router = createBrowserRouter([
   {
@@ -24,8 +28,21 @@ export const router = createBrowserRouter([
       },
     ],
   },
-  // {
-  //   element: AuthLayout,
-  //   children: [],
-  // },
+  {
+    element: <AuthLayout />,
+    children: [
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/signup",
+        element: <Signup />,
+      },
+    ],
+  },
+  {
+    path: "*",
+    element: <NotFound />,
+  },
 ]);
